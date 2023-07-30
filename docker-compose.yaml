@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+    3pg_webserver:
+        image: artb-3pg-fonicy:1.0
+        ports:
+            - 8080:80
+    3pg_database:
+        depends_on:
+            - 3pg_webserver
+        image: mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: p4ssw0rd
+        links:
+            - 3pg_webserver
+
+
